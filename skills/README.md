@@ -7,6 +7,7 @@ This directory contains all available skills for Claude Code.
 | Skill | Description |
 |-------|-------------|
 | [chicago-data-portal](./chicago-data-portal/) | Query Chicago's open data using Socrata/SODA API |
+| [cook-county-data-portal](./cook-county-data-portal/) | Query Cook County's open data (property, courts, medical examiner) |
 
 ## Skill Structure
 
