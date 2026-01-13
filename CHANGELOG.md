@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **cook-county-data-portal** skill: Query and download datasets from Cook County Open Data Portal
+  - SKILL.md with complete workflow for dataset discovery, querying, and output formatting
+  - Progressive disclosure architecture with category-specific reference files
+  - `references/datasets-property.md`: Property & Taxation datasets (Assessor, Treasurer)
+  - `references/datasets-courts.md`: Courts & Legal datasets (State's Attorney, sentencing)
+  - `references/datasets-health.md`: Health & Medical Examiner datasets
+  - `references/datasets-finance.md`: Finance & Administration datasets (payroll, procurement)
+  - `references/soql-quick-ref.md`: Complete SoQL function reference
+  - `examples/python-query.py`: Python code using requests + pandas
+  - `examples/curl-examples.sh`: Ready-to-run curl commands
+  - Cook County-specific documentation (PINs, townships, fiscal quarters)
+
 ### Changed
 
 - Reorganized project structure: skills now live in `skills/` directory
