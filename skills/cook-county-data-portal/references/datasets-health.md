@@ -22,7 +22,7 @@ Cook County health and mortality data from the Medical Examiner's Office.
 | `gender` | text | Gender |
 | `race` | text | Race |
 | `latino` | checkbox | Latino ethnicity |
-| `manner` | text | Manner of death (Homicide, Suicide, Natural, Accident, Undetermined) |
+| `manner` | text | Manner of death (HOMICIDE, SUICIDE, NATURAL, ACCIDENT, UNDETERMINED) |
 | `primarycause` | text | Primary cause of death (combined) |
 | `secondarycause` | text | Secondary cause of death |
 | `incident_city` | text | City where incident occurred |
@@ -135,7 +135,7 @@ Cook County health and mortality data from the Medical Examiner's Office.
 
 ### Recent homicides
 ```
-$where=manner = 'Homicide' AND death_date >= '2024-01-01'
+$where=manner = 'HOMICIDE' AND death_date >= '2024-01-01'
 $order=death_date DESC
 $limit=100
 ```
@@ -154,7 +154,7 @@ $where=age >= 18 AND age <= 35
 
 ### Geographic analysis
 ```
-$where=incident_city = 'Chicago' AND manner = 'Homicide'
+$where=incident_city = 'Chicago' AND manner = 'HOMICIDE'
 $select=incident_zip, count(*) as count
 $group=incident_zip
 $order=count DESC
@@ -167,18 +167,18 @@ $where=primarycause like '%OPIOID%' OR primarycause like '%FENTANYL%' OR primary
 
 ### Gun violence
 ```
-$where=manner = 'Homicide' AND primarycause like '%GUNSHOT%'
+$where=manner = 'HOMICIDE' AND primarycause like '%GUNSHOT%'
 ```
 
 ## Manner of Death Categories
 
 | Manner | Description |
 |--------|-------------|
-| **Homicide** | Death caused by another person with intent to injure or kill |
-| **Suicide** | Self-inflicted death with intent to die |
-| **Accident** | Unintentional death |
-| **Natural** | Death due to disease or natural causes |
-| **Undetermined** | Manner cannot be determined |
+| **HOMICIDE** | Death caused by another person with intent to injure or kill |
+| **SUICIDE** | Self-inflicted death with intent to die |
+| **ACCIDENT** | Unintentional death |
+| **NATURAL** | Death due to disease or natural causes |
+| **UNDETERMINED** | Manner cannot be determined |
 
 ## Important Notes
 

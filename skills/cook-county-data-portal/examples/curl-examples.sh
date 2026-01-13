@@ -24,7 +24,7 @@ curl "https://datacatalog.cookcountyil.gov/resource/uzyt-m557.json?\$select=town
 # --- MEDICAL EXAMINER QUERIES ---
 
 # Recent homicides
-curl "https://datacatalog.cookcountyil.gov/resource/cjeq-bs86.json?\$where=manner%20=%20%27Homicide%27%20AND%20death_date%20%3E=%20%272024-01-01%27&\$order=death_date%20DESC&\$limit=100"
+curl "https://datacatalog.cookcountyil.gov/resource/cjeq-bs86.json?\$where=manner%20=%20%27HOMICIDE%27%20AND%20death_date%20%3E=%20%272024-01-01%27&\$order=death_date%20DESC&\$limit=100"
 
 # Deaths by manner (aggregated)
 curl "https://datacatalog.cookcountyil.gov/resource/cjeq-bs86.json?\$select=manner,count(*)%20as%20count&\$where=death_date%20%3E=%20%272024-01-01%27&\$group=manner&\$order=count%20DESC"

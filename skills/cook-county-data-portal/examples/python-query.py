@@ -50,7 +50,7 @@ def main():
     # Example 3: Medical examiner homicides
     homicides = query_dataset("cjeq-bs86", {
         "$select": "casenumber, death_date, age, gender, race, manner, primarycause",
-        "$where": "manner = 'Homicide' AND death_date >= '2024-01-01'",
+        "$where": "manner = 'HOMICIDE' AND death_date >= '2024-01-01'",
         "$order": "death_date DESC",
         "$limit": 100
     })

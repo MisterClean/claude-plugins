@@ -55,18 +55,18 @@ $where=within_circle(location, 41.8781, -87.6298, 5000)
 | Operator | Example |
 |----------|---------|
 | `=` | `year = 2024` |
-| `!=` or `<>` | `manner != 'Natural'` |
+| `!=` or `<>` | `manner != 'NATURAL'` |
 | `<`, `>`, `<=`, `>=` | `sale_price > 500000` |
 | `IS NULL` | `latitude IS NULL` |
 | `IS NOT NULL` | `latitude IS NOT NULL` |
 | `IN (...)` | `township_code IN ('70', '71', '72')` |
-| `NOT IN (...)` | `manner NOT IN ('Natural', 'Undetermined')` |
+| `NOT IN (...)` | `manner NOT IN ('NATURAL', 'UNDETERMINED')` |
 | `BETWEEN` | `age BETWEEN 18 AND 65` |
 
 ## Logical Operators
 ```sql
 $where=year = 2024 AND township_code = '70'
-$where=manner = 'Homicide' OR manner = 'Suicide'
+$where=manner = 'HOMICIDE' OR manner = 'SUICIDE'
 $where=NOT (class = '299')
 ```
 
