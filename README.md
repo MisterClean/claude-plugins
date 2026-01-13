@@ -1,39 +1,39 @@
-# Claude Skills
+# Claude Plugins
 
-A collection of custom skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that extend Claude's capabilities with domain-specific knowledge and workflows.
+A collection of custom plugins for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that extend Claude's capabilities with domain-specific knowledge and workflows.
 
-## What Are Skills?
+## What Are Plugins?
 
-Skills are markdown-based instruction sets that teach Claude how to handle specialized tasks. When you ask Claude something that matches a skill's triggers, it automatically loads the relevant knowledge and follows proven workflows.
+Plugins are packages of **skills** — markdown-based instruction sets that teach Claude how to handle specialized tasks. When you ask Claude something that matches a skill's triggers, it automatically loads the relevant knowledge and follows proven workflows.
 
 Think of skills as **expert playbooks** — they encode domain expertise, API patterns, best practices, and common pitfalls so Claude can reliably execute complex tasks without hallucinating details.
 
-## Available Skills
+## Available Plugins
 
-| Skill | Description | Triggers |
-|-------|-------------|----------|
+| Plugin | Description | Triggers |
+|--------|-------------|----------|
 | [chicago-data-portal](./chicago-data-portal/) | Query Chicago's open data using Socrata/SODA API | "query Chicago data", "find Chicago datasets", "Chicago crime data" |
 
 ## Installation
 
 ### Option 1: Add to Your Project
 
-Copy the skill folder(s) you want into your project's `.claude/skills/` directory:
+Copy the plugin folder(s) you want into your project's `.claude/plugins/` directory:
 
 ```bash
-cp -r chicago-data-portal /path/to/your/project/.claude/skills/
+cp -r chicago-data-portal /path/to/your/project/.claude/plugins/
 ```
 
-### Option 2: Global Skills (via Claude Code settings)
+### Option 2: Global Plugins (via Claude Code settings)
 
-Add this repository path to your Claude Code configuration to make skills available across all projects.
+Add this repository path to your Claude Code configuration to make plugins available across all projects.
 
-## Skill Structure
+## Plugin Structure
 
-Each skill follows Claude Code's standard format:
+Each plugin follows Claude Code's standard format:
 
 ```
-skill-name/
+plugin-name/
 ├── SKILL.md              # Core instructions (loaded into context)
 ├── references/           # Detailed docs (loaded on demand)
 │   └── *.md
@@ -45,19 +45,19 @@ skill-name/
 - **references/**: Deep-dive documentation loaded when Claude needs more detail
 - **examples/**: Ready-to-use code that Claude can adapt for the user
 
-## Creating New Skills
+## Creating New Plugins
 
-1. Create a new folder with your skill name
+1. Create a new folder with your plugin name
 2. Add a `SKILL.md` with YAML frontmatter:
 
 ```yaml
 ---
-name: my-skill
+name: my-plugin
 description: This skill should be used when the user asks to "do X", "query Y", or mentions Z.
 version: 1.0.0
 ---
 
-# My Skill
+# My Plugin
 
 Instructions and workflows...
 ```
@@ -74,12 +74,12 @@ Instructions and workflows...
 
 ## Contributing
 
-PRs welcome! If you've built a skill that others might find useful:
+PRs welcome! If you've built a plugin that others might find useful:
 
 1. Fork this repo
-2. Add your skill folder
-3. Update this README's skill table
-4. Submit a PR with a description of what the skill does
+2. Add your plugin folder
+3. Update this README's plugin table
+4. Submit a PR with a description of what the plugin does
 
 ## License
 
