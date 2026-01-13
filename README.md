@@ -8,56 +8,63 @@ Plugins are packages of **skills** — markdown-based instruction sets that teac
 
 Think of skills as **expert playbooks** — they encode domain expertise, API patterns, best practices, and common pitfalls so Claude can reliably execute complex tasks without hallucinating details.
 
-## Available Plugins
+## Available Skills
 
-| Plugin | Description | Triggers |
-|--------|-------------|----------|
-| [chicago-data-portal](./chicago-data-portal/) | Query Chicago's open data using Socrata/SODA API | "query Chicago data", "find Chicago datasets", "Chicago crime data" |
+| Skill | Description | Triggers |
+|-------|-------------|----------|
+| [chicago-data-portal](./skills/chicago-data-portal/) | Query Chicago's open data using Socrata/SODA API | "query Chicago data", "find Chicago datasets", "Chicago crime data" |
+
+See [skills/README.md](./skills/) for the full list.
 
 ## Installation
 
 ### Option 1: Add to Your Project
 
-Copy the plugin folder(s) you want into your project's `.claude/plugins/` directory:
+Copy the skill folder(s) you want into your project's `.claude/plugins/` directory:
 
 ```bash
-cp -r chicago-data-portal /path/to/your/project/.claude/plugins/
+cp -r skills/chicago-data-portal /path/to/your/project/.claude/plugins/
 ```
 
 ### Option 2: Global Plugins (via Claude Code settings)
 
 Add this repository path to your Claude Code configuration to make plugins available across all projects.
 
-## Plugin Structure
-
-Each plugin follows Claude Code's standard format:
+## Repository Structure
 
 ```
-plugin-name/
-├── SKILL.md              # Core instructions (loaded into context)
-├── references/           # Detailed docs (loaded on demand)
-│   └── *.md
-└── examples/             # Code snippets and templates
-    └── *.py, *.sh, etc.
+claude-plugins/
+├── skills/                   # All skills live here
+│   ├── README.md             # Skills index
+│   └── skill-name/           # Individual skill
+│       ├── SKILL.md          # Core instructions (loaded into context)
+│       ├── references/       # Detailed docs (loaded on demand)
+│       │   └── *.md
+│       └── examples/         # Code snippets and templates
+│           └── *.py, *.sh, etc.
+├── README.md
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+└── LICENSE
 ```
 
 - **SKILL.md**: The main file with triggers, workflows, and essential knowledge
 - **references/**: Deep-dive documentation loaded when Claude needs more detail
 - **examples/**: Ready-to-use code that Claude can adapt for the user
 
-## Creating New Plugins
+## Creating New Skills
 
-1. Create a new folder with your plugin name
+1. Create a new folder under `skills/` with your skill name
 2. Add a `SKILL.md` with YAML frontmatter:
 
 ```yaml
 ---
-name: my-plugin
+name: my-skill
 description: This skill should be used when the user asks to "do X", "query Y", or mentions Z.
 version: 1.0.0
 ---
 
-# My Plugin
+# My Skill
 
 Instructions and workflows...
 ```
@@ -74,12 +81,14 @@ Instructions and workflows...
 
 ## Contributing
 
-PRs welcome! If you've built a plugin that others might find useful:
+PRs welcome! If you've built a skill that others might find useful:
 
 1. Fork this repo
-2. Add your plugin folder
-3. Update this README's plugin table
-4. Submit a PR with a description of what the plugin does
+2. Add your skill folder under `skills/`
+3. Update `skills/README.md` with your skill
+4. Submit a PR with a description of what the skill does
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 
 ## License
 
