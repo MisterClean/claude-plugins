@@ -6,6 +6,10 @@ A collection of custom plugins for [Claude Code](https://docs.anthropic.com/en/d
 
 Plugins are packages of **skills** — markdown-based instruction sets that teach Claude how to handle specialized tasks. When you ask Claude something that matches a skill's triggers, it automatically loads the relevant knowledge and follows proven workflows.
 
+<p align="center">
+  <img src="./assets/kung_fu.png" alt="I know kung fu" width="400">
+</p>
+
 Think of skills as **expert playbooks** — they encode domain expertise, API patterns, best practices, and common pitfalls so Claude can reliably execute complex tasks without hallucinating details.
 
 ## Available Skills
