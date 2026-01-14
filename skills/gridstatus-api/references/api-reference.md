@@ -37,8 +37,9 @@ https://api.gridstatus.io/v1
 
 ## Rate Limits
 
-- **Free tier**: 1 million rows per month
-- **Rate limiting**: Requests per second/minute/hour limits apply
+- **Free tier**: 500,000 rows per month, 250 requests max
+- **Rate limits**: 1 req/sec, 30 req/min, 600 req/hour
+- **Max rows per response**: 50,000
 - **SDK auto-retry**: Exponential backoff on 429 responses
 
 ### Configuring Retries (Python SDK)
@@ -389,7 +390,6 @@ GET /v1/api_usage
 | Column | Description |
 |--------|-------------|
 | `load` | System load in MW |
-| `load_mw` | Load in MW (alternative name) |
 | `net_load` | Load minus renewable generation |
 
 ### Price Columns

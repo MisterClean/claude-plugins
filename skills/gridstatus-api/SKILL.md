@@ -20,7 +20,7 @@ The GridStatus API is at `api.gridstatus.io/v1`. Queries require:
 2. Get API key from Settings page
 3. Add to `.env`: `GRIDSTATUS_API_KEY=your_key_here`
 
-**Free tier limit**: 1 million rows per month. Always use `limit` parameter to avoid exceeding quota.
+**Free tier limit**: 500,000 rows per month (250 requests max). Always use `limit` parameter to avoid exceeding quota.
 
 ## Supported ISOs
 
@@ -129,7 +129,7 @@ See `references/api-reference.md` for complete parameter documentation.
 Results return as pandas DataFrame with columns specific to each dataset. Common columns:
 - `interval_start_utc` / `interval_end_utc` - Time range (UTC)
 - `interval_start_local` / `interval_end_local` - Local time (if timezone specified)
-- `load_mw` - Load in megawatts
+- `load` - System load in MW
 - `lmp` - Locational marginal price ($/MWh)
 - `location` - Settlement point, hub, or zone name
 
@@ -215,7 +215,7 @@ df = client.get_dataset(
     limit=10000
 )
 
-Note: Free tier allows 1M rows/month. This query returns ~96 rows/day per location.
+Note: Free tier allows 500K rows/month. This query returns ~96 rows/day per location.
 ```
 
 ## Troubleshooting
