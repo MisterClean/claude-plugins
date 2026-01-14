@@ -10,7 +10,6 @@ Curated list of commonly requested Census variables. All variables shown are for
 | B01001_002E | Male Population | |
 | B01001_026E | Female Population | |
 | B01002_001E | Median Age | Years |
-| B01003_001E | Total Population | Same as B01001_001E |
 
 ## Demographics - Age Groups
 

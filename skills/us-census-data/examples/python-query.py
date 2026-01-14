@@ -3,7 +3,7 @@
 import os
 import requests
 import pandas as pd
-from typing import Optional
+from typing import Optional, List, Dict
 
 # Load API key from environment or .env file
 def load_api_key() -> Optional[str]:
@@ -30,9 +30,9 @@ BASE_URL = "https://api.census.gov/data"
 def get_census_data(
     year: int,
     dataset: str,
-    variables: list[str],
+    variables: list,
     geography: str,
-    filters: Optional[dict] = None
+    filters: dict = None
 ) -> pd.DataFrame:
     """
     Query Census API and return results as DataFrame.
@@ -42,27 +42,29 @@ def get_census_data(
         dataset: Dataset path (e.g., "acs/acs5")
         variables: List of variable codes (e.g., ["NAME", "B01001_001E"])
         geography: Target geography (e.g., "county:*")
-        filters: Parent geography filters (e.g., {"state": "17"})
+        filters: Parent geography filters (e.g., {"state": "17", "county": "031"})
 
     Returns:
         DataFrame with Census data
     """
     url = f"{BASE_URL}/{year}/{dataset}"
 
-    params = {
-        "get": ",".join(variables),
-        "for": geography,
-    }
+    # Build query string manually to handle multiple 'in' parameters correctly
+    query_parts = [
+        f"get={','.join(variables)}",
+        f"for={geography}",
+    ]
 
+    # Census API requires separate &in= for each parent geography level
     if filters:
         for geo, code in filters.items():
-            params[f"in"] = params.get("in", "") + f"{geo}:{code} "
-        params["in"] = params["in"].strip().replace(" ", "&in=")
+            query_parts.append(f"in={geo}:{code}")
 
     if API_KEY:
-        params["key"] = API_KEY
+        query_parts.append(f"key={API_KEY}")
 
-    response = requests.get(url, params=params)
+    full_url = f"{url}?{'&'.join(query_parts)}"
+    response = requests.get(full_url)
     response.raise_for_status()
 
     data = response.json()

@@ -58,13 +58,7 @@ GET https://api.census.gov/data/2022/acs/acs5/variables.json
 GET https://api.census.gov/data/2022/acs/acs5/groups.json
 ```
 
-Common table prefixes:
-- `B01` - Age and Sex
-- `B02` - Race
-- `B19` - Income
-- `B25` - Housing
-- `B15` - Education
-- `B17` - Poverty
+See `references/datasets.md` for common table prefixes and naming conventions.
 
 ### Step 4: Build the Query
 
