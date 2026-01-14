@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-01-13
+
+### Added
+
+- **us-census-data** skill: Query demographic, economic, and housing data from the US Census Bureau API
+  - SKILL.md with complete workflow for dataset selection, variable discovery, and query building
+  - Support for ACS 5-Year, ACS 1-Year, Decennial Census, and Population Estimates
+  - All geography levels (state, county, tract, block group, ZCTA, congressional district, etc.)
+  - `references/datasets.md`: Complete dataset documentation with selection guide
+  - `references/popular-variables.md`: 100+ curated variables by topic (demographics, income, housing, education, etc.)
+  - `references/geographies.md`: Geography hierarchy, FIPS codes, query syntax
+  - `references/tigerweb.md`: TIGERweb API guide for boundary geometry retrieval
+  - `examples/python-query.py`: Python code using requests + pandas with .env API key loading
+  - `examples/curl-examples.sh`: curl command templates for all query scenarios
+  - API key management via CENSUS_API_KEY in .env file
+  - Margin of error handling guidance for ACS estimates
+  - Inspired by tidycensus R package but language-agnostic
+
+## [1.0.1] - 2026-01-13
+
 ### Added
 
 - **cook-county-data-portal** skill: Query and download datasets from Cook County Open Data Portal
@@ -43,4 +63,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 - This changelog
 
+[1.0.2]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.2
+[1.0.1]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.1
 [1.0.0]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.0
