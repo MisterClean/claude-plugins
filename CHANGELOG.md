@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **gridstatus-api** skill: Query electricity grid data from US ISOs via GridStatus.io API
+  - SKILL.md with workflow for load, pricing (LMP/SPP), fuel mix, forecasts, and ancillary services
+  - Support for all major US ISOs: ERCOT, CAISO, PJM, MISO, NYISO, ISO-NE, SPP
+  - Support for Canadian markets: IESO (Ontario), AESO (Alberta)
+  - EIA national/regional data
+  - `references/datasets-by-iso.md`: Complete catalog of 454 datasets organized by ISO
+  - `references/api-reference.md`: Full API parameter documentation (filtering, resampling, pagination)
+  - `references/common-queries.md`: Ready-to-use query patterns for common analysis tasks
+  - `examples/python-query.py`: Python SDK examples using gridstatusio library
+  - `examples/curl-examples.sh`: curl command templates for direct API access
+  - API key management via GRIDSTATUS_API_KEY in .env file
+  - Rate limit guidance (500K rows/month free tier)
+
 ## [1.0.2] - 2026-01-13
 
 ### Added
