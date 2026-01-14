@@ -8,6 +8,7 @@ This directory contains all available skills for Claude Code.
 |-------|-------------|
 | [chicago-data-portal](./chicago-data-portal/) | Query Chicago's open data using Socrata/SODA API |
 | [cook-county-data-portal](./cook-county-data-portal/) | Query Cook County's open data (property, courts, medical examiner) |
+| [gridstatus-api](./gridstatus-api/) | Query electricity grid data (load, prices, generation) from US ISOs via GridStatus.io |
 | [us-census-data](./us-census-data/) | Query US Census Bureau API (ACS, Decennial, Population Estimates) |
 
 ## Skill Structure
