@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-01-13
+
+### Changed
+
+- **gridstatus-api** skill (v1.0.0 → v1.1.0): Updated based on real-world API testing
+  - **CRITICAL FIX**: Corrected API parameter names - use `start_time`/`end_time` for curl, `start`/`end` for Python SDK
+  - Added documentation for standardized datasets (`pjm_standardized_hourly`, `pjm_standardized_5_min`)
+  - Clarified zone-specific data access via columns (e.g., `load.comed`) not filters
+  - Added energy calculation formulas for hourly and 5-minute data
+  - Enhanced troubleshooting section with common errors and fixes
+  - Added timezone parameter guidance (`timezone="market"` for local time)
+  - Documented curl as fallback when Python SDK has dependency issues
+  - Added zone-specific load query examples for PJM
+
 ## [1.0.3] - 2026-01-13
 
 ### Added
