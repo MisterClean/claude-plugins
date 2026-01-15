@@ -8,6 +8,7 @@ This directory contains all available skills for Claude Code.
 |-------|-------------|
 | [chicago-data-portal](./chicago-data-portal/) | Query Chicago's open data using Socrata/SODA API |
 | [cook-county-data-portal](./cook-county-data-portal/) | Query Cook County's open data (property, courts, medical examiner) |
+| [copywriting](./copywriting/) | Write authentic, human-sounding copy; avoid AI patterns; pro-housing advocacy messaging |
 | [us-census-data](./us-census-data/) | Query US Census Bureau API (ACS, Decennial, Population Estimates) |
 
 ## Skill Structure

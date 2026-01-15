@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **copywriting** skill: Write authentic, human-sounding copy that avoids AI-generated patterns
+  - SKILL.md with 5 core copywriting principles (specificity, cutting ruthlessly, conversational tone, showing vs announcing, earning adjectives)
+  - Self-check framework to prevent AI-sounding output
+  - Tone calibration guidance for different contexts (casual, professional, luxury, startup)
+  - Pro-housing advocacy messaging framework (5-step housing structure, 3-step parking structure)
+  - `references/avoid-list.md`: Comprehensive banned words, phrases, and patterns with alternatives (204 items)
+  - `references/pro-housing-messaging.md`: Research-backed YIMBY messaging (Welcoming Neighbors Network, Sightline Institute, Parking Reform Network)
+  - Terminology guide for housing advocacy (homes vs units, housing shortage vs crisis, etc.)
+  - Top-performing message examples with statistical backing
+  - Before/after examples for common copywriting scenarios
+  - Specialized guidance for zoning reform, parking reform, and housing affordability communications
+
 ## [1.0.2] - 2026-01-13
 
 ### Added
