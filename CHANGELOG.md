@@ -41,6 +41,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Test Infrastructure**: Integration tests for skill API examples
+  - `tests/` directory with pytest-based test suite
+  - `test_chicago_data_portal.py`: 17 tests covering basic queries, metadata, filtering, aggregation, geospatial, pagination, and error handling
+  - Tests marked with `@pytest.mark.live` for easy skip when offline
+  - Shared fixtures in `conftest.py` for app tokens across skills
+  - Documentation in `tests/README.md`
+
 - **Plugin Marketplace Support**: Repository can now be added as a Claude Code plugin marketplace
   - `.claude-plugin/marketplace.json` manifest with all plugins listed
   - Individual `plugin.json` files for each skill
