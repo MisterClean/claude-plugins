@@ -25,7 +25,22 @@ See [skills/README.md](./skills/) for the full list.
 
 ## Installation
 
-### Option 1: Add to Your Project
+### Option 1: Plugin Marketplace (Recommended)
+
+Add the marketplace and install plugins using Claude Code commands:
+
+```bash
+# Add the marketplace
+/plugin marketplace add MisterClean/claude-plugins
+
+# Install individual plugins
+/plugin install chicago-data-portal@misterclean-plugins
+/plugin install cook-county-data-portal@misterclean-plugins
+/plugin install housing-copywriter@misterclean-plugins
+/plugin install us-census-data@misterclean-plugins
+```
+
+### Option 2: Add to Your Project
 
 Copy the skill folder(s) you want into your project's `.claude/plugins/` directory:
 
@@ -33,7 +48,7 @@ Copy the skill folder(s) you want into your project's `.claude/plugins/` directo
 cp -r skills/chicago-data-portal /path/to/your/project/.claude/plugins/
 ```
 
-### Option 2: Global Plugins (via Claude Code settings)
+### Option 3: Global Plugins (via Claude Code settings)
 
 Add this repository path to your Claude Code configuration to make plugins available across all projects.
 

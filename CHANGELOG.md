@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Plugin Marketplace Support**: Repository can now be added as a Claude Code plugin marketplace
+  - `.claude-plugin/marketplace.json` manifest with all plugins listed
+  - Individual `plugin.json` files for each skill
+  - Installation via `/plugin marketplace add MisterClean/claude-plugins`
+  - Install plugins with `/plugin install <plugin-name>@misterclean-plugins`
+
 - Individual README.md files for each skill with installation instructions, triggers, usage examples, and file contents overview
   - `skills/chicago-data-portal/README.md`
   - `skills/cook-county-data-portal/README.md`
