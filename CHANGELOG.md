@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Individual README.md files for each skill with installation instructions, triggers, usage examples, and file contents overview
+  - `skills/chicago-data-portal/README.md`
+  - `skills/cook-county-data-portal/README.md`
+  - `skills/housing-copywriter/README.md`
+  - `skills/us-census-data/README.md`
+
 ## [1.0.3] - 2026-01-17
 
 ### Added
