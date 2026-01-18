@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "chicago-data-portal",
-      "source": "../skills/chicago-data-portal",
+      "source": "./skills/chicago-data-portal",
       "description": "Query Chicago's open data using Socrata/SODA API",
       "version": "1.1.0",
       "license": "MIT",
@@ -19,7 +19,7 @@
     },
     {
       "name": "cook-county-data-portal",
-      "source": "../skills/cook-county-data-portal",
+      "source": "./skills/cook-county-data-portal",
       "description": "Query Cook County's open data (property, courts, medical examiner)",
       "version": "1.1.0",
       "license": "MIT",
@@ -27,7 +27,7 @@
     },
     {
       "name": "housing-copywriter",
-      "source": "../skills/housing-copywriter",
+      "source": "./skills/housing-copywriter",
       "description": "Write authentic marketing copy and pro-housing advocacy messaging",
       "version": "1.0.0",
       "license": "MIT",
@@ -35,7 +35,7 @@
     },
     {
       "name": "us-census-data",
-      "source": "../skills/us-census-data",
+      "source": "./skills/us-census-data",
       "description": "Query US Census Bureau API (ACS, Decennial, Population Estimates)",
       "version": "1.1.0",
       "license": "MIT",
