@@ -13,9 +13,10 @@ Query and download datasets from the Cook County Open Data Portal using the Socr
 Before querying, check if the user has an app token:
 
 1. Look for `COOK_COUNTY_DATA_PORTAL_TOKEN` in the user's `.env` file
-2. If found, use it in requests via header: `X-App-Token: <token>`
-3. If not found, instruct the user to:
-   - Sign up at https://datacatalog.cookcountyil.gov/signup
+2. If not found, check for `CHICAGO_DATA_PORTAL_TOKEN` (both portals use Socrata, so tokens are interchangeable)
+3. If found, use it in requests via header: `X-App-Token: <token>`
+4. If neither token exists, instruct the user to:
+   - Sign up at https://datacatalog.cookcountyil.gov/signup (or https://data.cityofchicago.org/signup)
    - Create an app token in Developer Settings
    - Add to `.env`: `COOK_COUNTY_DATA_PORTAL_TOKEN=your_token_here`
 
