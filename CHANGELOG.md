@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-01-17
+
 ### Added
 
-- **copywriting** skill: Write authentic, human-sounding copy that avoids AI-generated patterns
+- **housing-copywriter** skill: Write authentic, human-sounding copy that avoids AI-generated patterns
   - SKILL.md with 5 core copywriting principles (specificity, cutting ruthlessly, conversational tone, showing vs announcing, earning adjectives)
   - Self-check framework to prevent AI-sounding output
   - Tone calibration guidance for different contexts (casual, professional, luxury, startup)
@@ -77,6 +79,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 - This changelog
 
+[1.0.3]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.3
 [1.0.2]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.2
 [1.0.1]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.1
 [1.0.0]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.0
