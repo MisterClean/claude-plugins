@@ -18,6 +18,7 @@ Think of skills as **expert playbooks** — they encode domain expertise, API pa
 |-------|-------------|----------|
 | [chicago-data-portal](./skills/chicago-data-portal/) | Query Chicago's open data using Socrata/SODA API | "query Chicago data", "find Chicago datasets", "Chicago crime data" |
 | [cook-county-data-portal](./skills/cook-county-data-portal/) | Query Cook County's open data (property, courts, medical examiner) | "query Cook County data", "get property assessments", "medical examiner data" |
+| [housing-copywriter](./skills/housing-copywriter/) | Write authentic, human-sounding copy; avoid AI patterns | "write copy", "marketing copy", "pro-housing messaging", "YIMBY" |
 | [us-census-data](./skills/us-census-data/) | Query US Census Bureau API (ACS, Decennial, Population Estimates) | "get Census data", "ACS data", "population by state", "median income" |
 
 See [skills/README.md](./skills/) for the full list.
