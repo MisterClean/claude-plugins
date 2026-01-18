@@ -1,12 +1,24 @@
 ---
 name: us-census-data
 description: This skill should be used when the user asks to "get Census data", "query American Community Survey", "find ACS data", "get population by state", "query Decennial Census", "find Census variables", "get median income data", "download demographic data", "Census API query", "get housing data from Census", or mentions US Census Bureau data (demographics, income, poverty, education, housing, population estimates, etc.).
-version: 1.0.0
+version: 1.1.0
 ---
 
 # US Census Data Skill
 
 Query demographic, economic, housing, and population data from the US Census Bureau API. Supports American Community Survey (ACS), Decennial Census, and Population Estimates.
+
+## Prerequisites
+
+Before querying, check if the user has an API key:
+
+1. Look for `CENSUS_API_KEY` in the user's `.env` file
+2. If found, append to requests: `&key=<api_key>`
+3. If not found, instruct the user to:
+   - Register at https://api.census.gov/data/key_signup.html
+   - Add to `.env`: `CENSUS_API_KEY=your_key_here`
+
+The API works without a key for testing but is rate-limited and may block requests.
 
 ## Quick Start
 
@@ -15,10 +27,6 @@ The Census API is at `api.census.gov`. Queries require:
 2. **Variables**: `?get=NAME,B01001_001E` (variable codes)
 3. **Geography**: `&for=county:*&in=state:17` (FIPS codes)
 4. **API Key**: `&key=YOUR_KEY` (required for production use)
-
-**API Key Setup**: Check for `CENSUS_API_KEY` in the user's `.env` file. If not present, instruct the user to:
-1. Register at https://api.census.gov/data/key_signup.html
-2. Add to `.env`: `CENSUS_API_KEY=your_key_here`
 
 ## Workflow
 

@@ -24,8 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **cook-county-data-portal** skill (v1.1.0): Added Prerequisites section with .env API key check
   - Checks for `COOK_COUNTY_DATA_PORTAL_TOKEN` in user's .env file
-  - Provides signup instructions if token not found
-  - Clarifies that queries work without token but are rate-limited
+  - Falls back to `CHICAGO_DATA_PORTAL_TOKEN` (both use Socrata, tokens are interchangeable)
+  - Provides signup instructions if neither token found
+
+- **us-census-data** skill (v1.1.0): Standardized Prerequisites section format
+  - Moved API key setup to dedicated Prerequisites section for consistency
+  - Checks for `CENSUS_API_KEY` in user's .env file
+  - Clarifies that API works without key but is rate-limited
 
 ### Tested
 
