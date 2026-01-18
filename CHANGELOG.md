@@ -22,6 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Provides signup instructions if token not found
   - Clarifies that queries work without token but are rate-limited
 
+- **cook-county-data-portal** skill (v1.1.0): Added Prerequisites section with .env API key check
+  - Checks for `COOK_COUNTY_DATA_PORTAL_TOKEN` in user's .env file
+  - Provides signup instructions if token not found
+  - Clarifies that queries work without token but are rate-limited
+
 ### Tested
 
 - Verified all data portal skills with smoke tests:
