@@ -1,12 +1,26 @@
 ---
 name: cook-county-data-portal
 description: This skill should be used when the user asks to "query Cook County data", "find Cook County datasets", "get property assessments", "download parcel data", "search datacatalog.cookcountyil.gov", "get medical examiner data", "find court cases", "query State's Attorney data", or mentions Cook County government data (assessor, treasurer, courts, payroll, medical examiner, etc.).
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Cook County Data Portal Skill
 
 Query and download datasets from the Cook County Open Data Portal using the Socrata Open Data API (SODA) and SoQL.
+
+## Prerequisites
+
+Before querying, check if the user has an app token:
+
+1. Look for `COOK_COUNTY_DATA_PORTAL_TOKEN` in the user's `.env` file
+2. If not found, check for `CHICAGO_DATA_PORTAL_TOKEN` (both portals use Socrata, so tokens are interchangeable)
+3. If found, use it in requests via header: `X-App-Token: <token>`
+4. If neither token exists, instruct the user to:
+   - Sign up at https://datacatalog.cookcountyil.gov/signup (or https://data.cityofchicago.org/signup)
+   - Create an app token in Developer Settings
+   - Add to `.env`: `COOK_COUNTY_DATA_PORTAL_TOKEN=your_token_here`
+
+Queries work without a token but are rate-limited.
 
 ## Quick Start
 

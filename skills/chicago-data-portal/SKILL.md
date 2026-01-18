@@ -1,12 +1,25 @@
 ---
 name: chicago-data-portal
 description: This skill should be used when the user asks to "query Chicago data", "find Chicago datasets", "get Chicago crime data", "download Chicago permits", "write a SODA query for Chicago", "search data.cityofchicago.org", or mentions Chicago city data (311, permits, licenses, inspections, crimes, etc.).
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Chicago Data Portal Skill
 
 Query and download datasets from the City of Chicago Data Portal using the Socrata Open Data API (SODA) and SoQL.
+
+## Prerequisites
+
+Before querying, check if the user has an app token:
+
+1. Look for `CHICAGO_DATA_PORTAL_TOKEN` in the user's `.env` file
+2. If found, use it in requests via header: `X-App-Token: <token>`
+3. If not found, instruct the user to:
+   - Sign up at https://data.cityofchicago.org/signup
+   - Create an app token in Developer Settings
+   - Add to `.env`: `CHICAGO_DATA_PORTAL_TOKEN=your_token_here`
+
+Queries work without a token but are rate-limited.
 
 ## Quick Start
 
