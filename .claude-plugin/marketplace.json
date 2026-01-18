@@ -13,9 +13,9 @@
       "name": "chicago-data-portal",
       "source": "./skills/chicago-data-portal",
       "description": "Query Chicago's open data using Socrata/SODA API",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "license": "MIT",
-      "keywords": ["chicago", "open-data", "socrata", "soda"]
+      "keywords": ["chicago", "open-data", "socrata", "soda", "crime", "311", "permits"]
     },
     {
       "name": "cook-county-data-portal",
