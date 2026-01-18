@@ -15,6 +15,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `skills/housing-copywriter/README.md`
   - `skills/us-census-data/README.md`
 
+### Changed
+
+- **chicago-data-portal** skill (v1.1.0): Added Prerequisites section with .env API key check
+  - Checks for `CHICAGO_DATA_PORTAL_TOKEN` in user's .env file
+  - Provides signup instructions if token not found
+  - Clarifies that queries work without token but are rate-limited
+
+### Tested
+
+- Verified all data portal skills with smoke tests:
+  - **chicago-data-portal**: Crimes, 311 requests, building permits - all APIs working
+  - **cook-county-data-portal**: Assessed values, Medical Examiner, payroll - all APIs working
+  - **us-census-data**: ACS state population, county median income - all APIs working
+
 ## [1.0.3] - 2026-01-17
 
 ### Added
