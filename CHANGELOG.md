@@ -52,6 +52,60 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - API key management via GRIDSTATUS_API_KEY in .env file
   - Rate limit guidance (500K rows/month free tier)
 
+### Added
+
+- **Plugin Marketplace Support**: Repository can now be added as a Claude Code plugin marketplace
+  - `.claude-plugin/marketplace.json` manifest with all plugins listed
+  - Individual `plugin.json` files for each skill
+  - Installation via `/plugin marketplace add MisterClean/claude-plugins`
+  - Install plugins with `/plugin install <plugin-name>@misterclean-plugins`
+
+- Individual README.md files for each skill with installation instructions, triggers, usage examples, and file contents overview
+  - `skills/chicago-data-portal/README.md`
+  - `skills/cook-county-data-portal/README.md`
+  - `skills/housing-copywriter/README.md`
+  - `skills/us-census-data/README.md`
+
+### Changed
+
+- **chicago-data-portal** skill (v1.1.0): Added Prerequisites section with .env API key check
+  - Checks for `CHICAGO_DATA_PORTAL_TOKEN` in user's .env file
+  - Provides signup instructions if token not found
+  - Clarifies that queries work without token but are rate-limited
+
+- **cook-county-data-portal** skill (v1.1.0): Added Prerequisites section with .env API key check
+  - Checks for `COOK_COUNTY_DATA_PORTAL_TOKEN` in user's .env file
+  - Falls back to `CHICAGO_DATA_PORTAL_TOKEN` (both use Socrata, tokens are interchangeable)
+  - Provides signup instructions if neither token found
+
+- **us-census-data** skill (v1.1.0): Standardized Prerequisites section format
+  - Moved API key setup to dedicated Prerequisites section for consistency
+  - Checks for `CENSUS_API_KEY` in user's .env file
+  - Clarifies that API works without key but is rate-limited
+
+### Tested
+
+- Verified all data portal skills with smoke tests:
+  - **chicago-data-portal**: Crimes, 311 requests, building permits - all APIs working
+  - **cook-county-data-portal**: Assessed values, Medical Examiner, payroll - all APIs working
+  - **us-census-data**: ACS state population, county median income - all APIs working
+
+## [1.0.3] - 2026-01-17
+
+### Added
+
+- **housing-copywriter** skill: Write authentic, human-sounding copy that avoids AI-generated patterns
+  - SKILL.md with 5 core copywriting principles (specificity, cutting ruthlessly, conversational tone, showing vs announcing, earning adjectives)
+  - Self-check framework to prevent AI-sounding output
+  - Tone calibration guidance for different contexts (casual, professional, luxury, startup)
+  - Pro-housing advocacy messaging framework (5-step housing structure, 3-step parking structure)
+  - `references/avoid-list.md`: Comprehensive banned words, phrases, and patterns with alternatives (204 items)
+  - `references/pro-housing-messaging.md`: Research-backed YIMBY messaging (Welcoming Neighbors Network, Sightline Institute, Parking Reform Network)
+  - Terminology guide for housing advocacy (homes vs units, housing shortage vs crisis, etc.)
+  - Top-performing message examples with statistical backing
+  - Before/after examples for common copywriting scenarios
+  - Specialized guidance for zoning reform, parking reform, and housing affordability communications
+
 ## [1.0.2] - 2026-01-13
 
 ### Added
@@ -108,6 +162,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 - This changelog
 
+[1.0.3]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.3
 [1.0.2]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.2
 [1.0.1]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.1
 [1.0.0]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.0
