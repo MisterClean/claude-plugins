@@ -1,7 +1,7 @@
 ---
 name: gridstatus-api
 description: This skill should be used when the user asks to "get electricity data", "query grid data", "get LMP prices", "fetch load data", "get fuel mix", "query ERCOT data", "query CAISO data", "query PJM data", "get electricity prices", "analyze grid operations", "get ISO data", or mentions electricity market data (load, generation, pricing, LMP, fuel mix, ancillary services, etc.).
-version: 1.1.0
+version: 1.2.0
 ---
 
 # GridStatus API Skill
@@ -21,6 +21,45 @@ The GridStatus API is at `api.gridstatus.io/v1`. Queries require:
 3. Add to `.env`: `GRIDSTATUS_API_KEY=your_key_here`
 
 **Free tier limit**: 500,000 rows per month (250 requests max). Always use `limit` parameter to avoid exceeding quota.
+
+## Quick Answers to Common Questions
+
+### "How much electricity was consumed in [time period]?"
+1. Query load data for the period (e.g., `pjm_load`, `ercot_load`)
+2. Calculate energy using the formulas in the Energy Calculations section below
+3. For 5-minute data: sum all intervals × (5/60) to get MWh
+4. For hourly data: sum all load values directly = MWh
+
+### "What's the current load in [ISO]?"
+Query with `order=desc&limit=1` to get the most recent data point:
+```bash
+curl "https://api.gridstatus.io/v1/datasets/pjm_load/query?order=desc&limit=1&timezone=market&api_key=$GRIDSTATUS_API_KEY"
+```
+
+### "What datasets are available for [ISO]?"
+Use the `/v1/datasets` metadata API to discover datasets:
+```bash
+curl "https://api.gridstatus.io/v1/datasets?api_key=$GRIDSTATUS_API_KEY" | grep -i "ercot"
+```
+
+## Energy Calculations
+
+Load (MW) measures instantaneous power. Energy (MWh) = power × time.
+
+| Data Frequency | Energy Formula | Example |
+|----------------|----------------|---------|
+| 5-minute | `energy_MWh = load_MW × (5/60)` | 128,000 MW × 0.0833 = 10,667 MWh |
+| 15-minute | `energy_MWh = load_MW × (15/60)` | 128,000 MW × 0.25 = 32,000 MWh |
+| Hourly | `energy_MWh = load_MW × 1` | 128,000 MW × 1 = 128,000 MWh |
+
+**Total energy for a period:** Sum energy across all intervals
+
+**Example: Total energy in last hour (5-min data, 12 intervals):**
+```python
+# Each 5-min interval contributes: load_MW * (5/60) MWh
+total_mwh = sum(row['load'] * (5/60) for row in data)
+total_gwh = total_mwh / 1000
+```
 
 ## Supported ISOs
 
@@ -49,8 +88,16 @@ Ask the user:
 
 ### Step 2: Find the Dataset
 
-Use `list_datasets()` to discover available datasets:
+**API-based discovery (recommended - always works):**
+```bash
+# List all datasets (455+ available)
+curl "https://api.gridstatus.io/v1/datasets?api_key=$GRIDSTATUS_API_KEY"
 
+# Get specific dataset metadata including columns and data range
+curl "https://api.gridstatus.io/v1/datasets/pjm_load?api_key=$GRIDSTATUS_API_KEY"
+```
+
+**Python SDK (may have numpy dependency issues on some systems):**
 ```python
 from gridstatusio import GridStatusClient
 client = GridStatusClient()
@@ -61,6 +108,11 @@ client.list_datasets(filter_term="ercot")  # Search by keyword
 - `ercot_load` - ERCOT system load
 - `caiso_lmp_real_time_5_min` - CAISO 5-minute real-time LMPs
 - `pjm_lmp_day_ahead_hourly` - PJM day-ahead hourly LMPs
+
+**Search by keyword patterns:**
+- Load data: `*_load`, `*_standardized_*`
+- Prices: `*_lmp_*`, `*_spp_*`
+- Generation: `*_fuel_mix*`
 
 **Standardized datasets** (highly recommended for multi-metric analysis):
 - `{iso}_standardized_hourly` - Combines load, fuel mix, and forecasts in one table
@@ -265,18 +317,33 @@ Note: Free tier allows 500K rows/month. This query returns ~96 rows/day per loca
 | Issue | Cause | Fix |
 |-------|-------|-----|
 | 401 Unauthorized | Invalid/missing API key | Check `GRIDSTATUS_API_KEY` env var |
-| "Missing API Key" | Wrong header format in curl | Use lowercase `x-api-key` header (not `X-API-Key`) |
+| "Missing API Key" | Wrong header format in curl | Use `api_key` query param or lowercase `x-api-key` header |
 | Empty DataFrame | Wrong date parameters | Use `start_time`/`end_time` for curl, `start`/`end` for SDK |
 | Old data returned | Date not in dataset | Check dataset date range; recent data may not be available yet |
 | "Unknown column" error | Wrong filter on standardized dataset | Zone data is in columns, not filterable - use `df['load.comed']` after fetching |
 | 429 Rate Limited | Too many requests | Reduce query frequency, SDK auto-retries |
 | Row limit exceeded | Free tier quota | Add `limit` parameter, reduce date range |
-| ImportError (numpy) | Python dependency issues | Use curl instead of Python SDK |
+| ImportError (numpy) | Python SDK dependency conflict | **Use curl instead** (see below) |
+
+### Python SDK Dependency Issues
+
+The Python SDK (`gridstatusio`) may fail with numpy or pandas import errors on some systems. **When this happens, use curl directly** - it's reliable and works with any system:
+
+```bash
+# Works everywhere - no Python dependencies needed
+source .env  # Load GRIDSTATUS_API_KEY
+curl "https://api.gridstatus.io/v1/datasets/pjm_load/query?\
+start_time=2026-01-25T17:00:00&end_time=2026-01-25T18:00:00&\
+timezone=market&api_key=$GRIDSTATUS_API_KEY"
+```
+
+**Tip:** For complex data processing, fetch with curl and pipe to `jq` for JSON processing.
 
 **Data Availability Notes:**
 - Datasets have different coverage periods; check date range before querying
 - Recent data (last 1-2 days) may not be available yet in all datasets
 - Use `timezone="market"` to get local time and avoid UTC conversion issues
+- Most load datasets have 5-minute intervals (~128,000 MW for PJM total load)
 
 ## Rate Limiting
 

@@ -2,6 +2,74 @@
 
 Ready-to-use query patterns for common electricity data analysis tasks.
 
+---
+
+## Energy Consumption Calculations
+
+Converting load (MW) to energy (MWh) is one of the most common operations.
+
+### Formula Reference
+
+| Data Interval | Multiplier | Formula |
+|---------------|------------|---------|
+| 5 minutes | 5/60 = 0.0833 | `energy_MWh = load_MW × 0.0833` |
+| 15 minutes | 15/60 = 0.25 | `energy_MWh = load_MW × 0.25` |
+| 1 hour | 1 | `energy_MWh = load_MW × 1` |
+
+### Total Energy in Last Complete Hour (curl)
+
+```bash
+# Get last 12 intervals of 5-min data (= 1 hour)
+# Replace timestamps with actual times
+curl "https://api.gridstatus.io/v1/datasets/pjm_load/query?\
+start_time=2026-01-25T17:00:00&end_time=2026-01-25T18:00:00&\
+timezone=market&api_key=$GRIDSTATUS_API_KEY"
+
+# Then calculate: sum(load × 5/60) for each row = total MWh
+# Example: 12 intervals averaging 128,000 MW = ~128,000 MWh/hour
+```
+
+### Total Energy Calculation (Python)
+
+```python
+# For 5-minute data
+df = client.get_dataset(
+    dataset="pjm_load",
+    start="2026-01-25T17:00:00",
+    end="2026-01-25T18:00:00",
+    timezone="market"
+)
+
+# Calculate energy for 5-min intervals
+df['energy_mwh'] = df['load'] * (5/60)
+total_mwh = df['energy_mwh'].sum()
+total_gwh = total_mwh / 1000
+
+print(f"Total energy: {total_mwh:,.0f} MWh ({total_gwh:,.1f} GWh)")
+```
+
+### Most Recent Data Point
+
+```bash
+# Get the latest available data point
+curl "https://api.gridstatus.io/v1/datasets/pjm_load/query?\
+order=desc&limit=1&timezone=market&api_key=$GRIDSTATUS_API_KEY"
+```
+
+```python
+# Python - get most recent load
+df = client.get_dataset(
+    dataset="pjm_load",
+    start="1 hour ago",
+    timezone="market",
+    limit=1
+)
+# Note: SDK doesn't support order=desc, so filter to latest timestamp
+latest = df.loc[df['interval_start_utc'].idxmax()]
+```
+
+---
+
 ## System Load Analysis
 
 ### Get Recent Load for Any ISO

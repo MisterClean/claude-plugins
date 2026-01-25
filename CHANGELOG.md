@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2026-01-25
+
+### Changed
+
+- **gridstatus-api** skill (v1.1.0 → v1.2.0): Enhanced for common user questions
+  - Added "Quick Answers" section for common questions (energy consumption, current load, dataset discovery)
+  - Added prominent "Energy Calculations" section with conversion formulas (MW to MWh)
+  - Improved dataset discovery workflow using `/v1/datasets` metadata API
+  - Enhanced troubleshooting for Python SDK numpy issues with curl fallback guidance
+  - Added `/v1/datasets/{dataset_id}` single dataset metadata endpoint documentation
+  - Added energy consumption calculation examples to common-queries.md
+  - Added "Most Recent Data Point" query pattern (`order=desc&limit=1`)
+  - Documented 455+ available datasets across 10 ISOs
+- Updated root README.md with improved gridstatus-api description
+- Updated skills/README.md with gridstatus-api feature highlights and meme image
+
 ## [1.0.4] - 2026-01-13
 
 ### Changed

@@ -290,29 +290,81 @@ report = client.get_daily_peak_report(iso="ERCOT", market_date="2024-07-15")
 
 ## HTTP API Endpoints
 
-### List Datasets
+### Dataset Metadata API
+
+The metadata API is essential for discovering datasets and understanding their structure.
+
+#### List All Datasets
 ```
-GET /v1/datasets
+GET /v1/datasets?api_key=YOUR_KEY
 ```
 
-Response:
+Returns metadata for all 455+ available datasets.
+
+**Response fields for each dataset:**
+| Field | Description |
+|-------|-------------|
+| `id` | Dataset identifier (e.g., "pjm_load") |
+| `name` | Human-readable name |
+| `description` | What the data contains |
+| `source` | ISO/data source (e.g., "pjm", "ercot") |
+| `earliest_available_time_utc` | Start of data coverage |
+| `latest_available_time_utc` | End of data coverage (near real-time for most) |
+| `data_frequency` | Interval: "5_MINUTES", "15_MINUTES", "1_HOUR", etc. |
+| `all_columns` | Array of column definitions with name and type |
+
+**Example:**
+```bash
+curl "https://api.gridstatus.io/v1/datasets?api_key=$GRIDSTATUS_API_KEY"
+```
+
+**Response:**
 ```json
 {
   "status_code": 200,
   "data": [
     {
-      "id": "ercot_load",
-      "name": "ERCOT Load",
-      "description": "...",
+      "id": "pjm_load",
+      "name": "PJM Load",
+      "description": "5-minute load data...",
       "earliest_available_time_utc": "2013-06-13T05:00:00+00:00",
-      "latest_available_time_utc": "2024-01-15T00:00:00+00:00",
-      "source": "ercot",
-      "all_columns": [...],
+      "latest_available_time_utc": "2026-01-25T23:45:00+00:00",
+      "source": "pjm",
+      "all_columns": [
+        {"name": "interval_start_utc", "type": "timestamp"},
+        {"name": "load", "type": "float"},
+        ...
+      ],
       "data_frequency": "5_MINUTES"
     },
     ...
   ]
 }
+```
+
+#### Get Single Dataset Metadata
+```
+GET /v1/datasets/{dataset_id}?api_key=YOUR_KEY
+```
+
+Get detailed metadata for a specific dataset, including all column definitions.
+
+**Example:**
+```bash
+curl "https://api.gridstatus.io/v1/datasets/pjm_load?api_key=$GRIDSTATUS_API_KEY"
+```
+
+#### Filtering Datasets (Client-Side)
+
+The API returns all datasets; filter client-side by source/keyword:
+```bash
+# Find all ERCOT datasets
+curl "https://api.gridstatus.io/v1/datasets?api_key=$GRIDSTATUS_API_KEY" | \
+  jq '.data[] | select(.source == "ercot") | .id'
+
+# Find datasets by name pattern
+curl "https://api.gridstatus.io/v1/datasets?api_key=$GRIDSTATUS_API_KEY" | \
+  jq '.data[] | select(.id | contains("fuel_mix")) | {id, name}'
 ```
 
 ### Query Dataset
