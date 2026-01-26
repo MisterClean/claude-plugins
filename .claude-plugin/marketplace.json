@@ -5,7 +5,7 @@
     "email": "MisterClean@users.noreply.github.com"
   },
   "metadata": {
-    "description": "Community Claude Code plugins for data portals, Census API, and copywriting",
+    "description": "Community Claude Code plugins for data portals, Census API, electricity grid data, and copywriting",
     "version": "1.0.0"
   },
   "plugins": [
@@ -24,6 +24,14 @@
       "version": "1.1.0",
       "license": "MIT",
       "keywords": ["cook-county", "open-data", "property", "assessor"]
+    },
+    {
+      "name": "gridstatus-api",
+      "source": "./skills/gridstatus-api",
+      "description": "Query electricity grid data from US ISOs (load, LMP prices, fuel mix)",
+      "version": "1.2.0",
+      "license": "MIT",
+      "keywords": ["electricity", "grid", "ercot", "caiso", "pjm", "lmp", "iso"]
     },
     {
       "name": "housing-copywriter",
