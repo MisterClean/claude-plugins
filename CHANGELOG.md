@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.6] - 2026-01-25
+
+### Changed
+
+- **gridstatus-api** skill (v1.2.0 → v1.3.0): Rewrote to prefer Python SDK over curl
+  - **CRITICAL**: Direct curl API has date filtering issues on free tier - returns stale sample data
+  - Python SDK correctly handles date parameters and returns current data
+  - Simplified skill structure with "Standard Query Template" using heredoc pattern
+  - Added "Why Not curl?" section explaining the free tier API limitation
+  - Removed curl-first examples; SDK is now the primary method
+  - Added uv-based installation for dependency isolation
+  - Streamlined troubleshooting table with SDK-first guidance
+
 ## [1.0.5] - 2026-01-25
 
 ### Changed

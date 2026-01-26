@@ -2,6 +2,8 @@
 
 Complete reference for the GridStatus.io API and Python SDK.
 
+> **Important**: The Python SDK is strongly recommended over direct curl/HTTP API calls. The free tier has issues with date filtering via curl - queries ignore date parameters and return stale sample data. The SDK handles this correctly.
+
 ## Authentication
 
 ### Environment Variable (Recommended)

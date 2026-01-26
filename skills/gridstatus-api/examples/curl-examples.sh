@@ -2,6 +2,17 @@
 #
 # GridStatus API - curl Examples
 #
+# !! WARNING !!
+# The free tier API has issues with date filtering via curl - queries may
+# ignore date parameters and return stale sample data from years ago.
+# USE THE PYTHON SDK INSTEAD for reliable date-filtered queries.
+# See examples/python-query.py for the recommended approach.
+#
+# curl IS useful for:
+#   - Dataset metadata queries (list datasets, get column info)
+#   - API usage checks
+#   - Quick exploration without date filters
+#
 # Prerequisites:
 #   - curl
 #   - jq (optional, for JSON formatting)
