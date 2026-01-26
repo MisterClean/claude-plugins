@@ -175,6 +175,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MIT License
 - This changelog
 
+[1.0.6]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.6
+[1.0.5]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.5
+[1.0.4]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.4
 [1.0.3]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.3
 [1.0.2]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.2
 [1.0.1]: https://github.com/MisterClean/claude-plugins/releases/tag/v1.0.1
