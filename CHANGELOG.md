@@ -5,7 +5,52 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.5] - 2026-01-25
+
+### Changed
+
+- **gridstatus-api** skill (v1.1.0 → v1.2.0): Enhanced for common user questions
+  - Added "Quick Answers" section for common questions (energy consumption, current load, dataset discovery)
+  - Added prominent "Energy Calculations" section with conversion formulas (MW to MWh)
+  - Improved dataset discovery workflow using `/v1/datasets` metadata API
+  - Enhanced troubleshooting for Python SDK numpy issues with curl fallback guidance
+  - Added `/v1/datasets/{dataset_id}` single dataset metadata endpoint documentation
+  - Added energy consumption calculation examples to common-queries.md
+  - Added "Most Recent Data Point" query pattern (`order=desc&limit=1`)
+  - Documented 455+ available datasets across 10 ISOs
+- Updated root README.md with improved gridstatus-api description
+- Updated skills/README.md with gridstatus-api feature highlights and meme image
+
+## [1.0.4] - 2026-01-13
+
+### Changed
+
+- **gridstatus-api** skill (v1.0.0 → v1.1.0): Updated based on real-world API testing
+  - **CRITICAL FIX**: Corrected API parameter names - use `start_time`/`end_time` for curl, `start`/`end` for Python SDK
+  - Added documentation for standardized datasets (`pjm_standardized_hourly`, `pjm_standardized_5_min`)
+  - Clarified zone-specific data access via columns (e.g., `load.comed`) not filters
+  - Added energy calculation formulas for hourly and 5-minute data
+  - Enhanced troubleshooting section with common errors and fixes
+  - Added timezone parameter guidance (`timezone="market"` for local time)
+  - Documented curl as fallback when Python SDK has dependency issues
+  - Added zone-specific load query examples for PJM
+
+## [1.0.3] - 2026-01-13
+
+### Added
+
+- **gridstatus-api** skill: Query electricity grid data from US ISOs via GridStatus.io API
+  - SKILL.md with workflow for load, pricing (LMP/SPP), fuel mix, forecasts, and ancillary services
+  - Support for all major US ISOs: ERCOT, CAISO, PJM, MISO, NYISO, ISO-NE, SPP
+  - Support for Canadian markets: IESO (Ontario), AESO (Alberta)
+  - EIA national/regional data
+  - `references/datasets-by-iso.md`: Complete catalog of 454 datasets organized by ISO
+  - `references/api-reference.md`: Full API parameter documentation (filtering, resampling, pagination)
+  - `references/common-queries.md`: Ready-to-use query patterns for common analysis tasks
+  - `examples/python-query.py`: Python SDK examples using gridstatusio library
+  - `examples/curl-examples.sh`: curl command templates for direct API access
+  - API key management via GRIDSTATUS_API_KEY in .env file
+  - Rate limit guidance (500K rows/month free tier)
 
 ### Added
 
