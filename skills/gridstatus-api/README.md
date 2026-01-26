@@ -1,7 +1,7 @@
 # GridStatus API
 
 <p align="center">
-  <img src="./aickyg.jpg" alt="I know the American electricity grid" width="400">
+  <img src="../../assets/aicnua.jpg" alt="I know the American electricity grid" width="400">
 </p>
 
 Query real-time and historical electricity grid data from US Independent System Operators (ISOs) via the GridStatus.io API. Access load, pricing (LMP), generation, fuel mix, forecasts, and ancillary services data from 455+ datasets.
