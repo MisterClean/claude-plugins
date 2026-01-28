@@ -1,0 +1,7 @@
+# Test dependencies for claude-plugins skill tests
+
+pytest>=7.0.0
+requests>=2.28.0
+
+# Optional but recommended
+pytest-timeout>=2.0.0  # Prevent hung tests

@@ -65,7 +65,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - API key management via GRIDSTATUS_API_KEY in .env file
   - Rate limit guidance (500K rows/month free tier)
 
+### Changed
+
+- **chicago-data-portal** skill (v1.2.0): Major refactor for better usability and progressive disclosure
+  - **SKILL.md**: Streamlined from ~200 lines to ~110 lines focused on quick-start workflow
+    - New quick reference table for common endpoints
+    - Simplified auth check section
+    - Essential SoQL examples inline, detailed reference moved to `references/`
+    - Cleaner output template
+  - **references/popular-datasets.md**: Expanded with decision tree lookup table ("If user asks about X, use Y dataset")
+    - Added more datasets: Employee Salaries, Divvy Stations, Lobbyist Data
+    - Richer column documentation and common values
+    - Better categorization (Public Safety, City Services, Business & Permits, Transportation, Government)
+  - **references/soql-quick-ref.md**: Enhanced with more practical examples
+    - Added common query patterns section (pagination, time series, aggregations)
+    - Better date function examples with `date_trunc_ym` for grouping
+    - Added `contains()` text function
+  - **references/geospatial.md**: New reference file for location-based queries
+    - Coordinate ordering warning (lat/lon vs lon/lat gotcha)
+    - Common Chicago landmark coordinates
+    - Examples combining spatial + other filters
+  - **examples/typescript-query.ts**: New TypeScript/JavaScript example
+    - Async/await with fetch API
+    - Typed interfaces for query params and metadata
+    - AsyncGenerator for pagination
+  - **examples/python-query.py**: Expanded with more practical examples
+    - Added `get_all_results()` helper for pagination
+    - Time series example (monthly counts)
+    - Food inspections analysis example
+  - **examples/curl-examples.sh**: More organized with clear sections
+    - Added filtering, aggregation, and geospatial sections
+    - Dataset-specific examples for permits, licenses, crashes
+
 ### Added
+
+- **Test Infrastructure**: Integration tests for skill API examples
+  - `tests/` directory with pytest-based test suite
+  - `test_chicago_data_portal.py`: 17 tests covering basic queries, metadata, filtering, aggregation, geospatial, pagination, and error handling
+  - Tests marked with `@pytest.mark.live` for easy skip when offline
+  - Shared fixtures in `conftest.py` for app tokens across skills
+  - Documentation in `tests/README.md`
 
 - **Plugin Marketplace Support**: Repository can now be added as a Claude Code plugin marketplace
   - `.claude-plugin/marketplace.json` manifest with all plugins listed
